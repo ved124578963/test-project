@@ -19,7 +19,7 @@ const Navbar = () => {
           <Link to="/adopt" className="hover:underline">Adopt Tree</Link>
           <Link to="/my-trees" className="hover:underline">My Trees</Link>
           <Link to="/login" className="bg-white text-green-600 px-4 py-1 rounded-lg hover:bg-gray-200">
-            Login / Profile
+            Login / Register
           </Link>
         </div>
 

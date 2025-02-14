@@ -14,7 +14,7 @@ const AdminLogin = () => {
     // Temporary login validation (API will be added later)
     if (username === "admin" && password === "admin123") {
       localStorage.setItem("admin", JSON.stringify({ username })); // Store admin session
-      navigate("/admin-dashboard"); // Redirect to Admin Dashboard
+      navigate("/admindashboard"); // Redirect to Admin Dashboard
     } else {
       setError("Invalid username or password");
     }
