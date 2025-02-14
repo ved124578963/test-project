@@ -35,8 +35,8 @@ const Navbar = () => {
           <Link to="/" className="hover:underline" onClick={() => setIsOpen(false)}>Home</Link>
           <Link to="/adopt" className="hover:underline" onClick={() => setIsOpen(false)}>Adopt Tree</Link>
           <Link to="/my-trees" className="hover:underline" onClick={() => setIsOpen(false)}>My Trees</Link>
-          <Link to="/profile" className="bg-white text-green-600 px-4 py-1 rounded-lg hover:bg-gray-200" onClick={() => setIsOpen(false)}>
-            Login / Profile
+          <Link to="/login" className="bg-white text-green-600 px-4 py-1 rounded-lg hover:bg-gray-200" onClick={() => setIsOpen(false)}>
+            Login / Register
           </Link>
         </div>
       )}

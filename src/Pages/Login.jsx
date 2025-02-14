@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useEffect } from "react";
+
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -7,6 +9,10 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  
+  useEffect(()=>{
+    console.log("Login Component is Mounted");
+  },[])
   const handleLogin = (e) => {
     e.preventDefault();
     setError(""); // Clear previous errors
