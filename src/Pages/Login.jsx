@@ -22,7 +22,7 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+      <div className="bg-white p-6 rounded-lg shadow-md w-11/12 sm:w-full max-w-md">
         <h2 className="text-2xl font-bold text-center mb-4">Tree Owner Login</h2>
 
         {error && <p className="text-red-500 text-center">{error}</p>}
