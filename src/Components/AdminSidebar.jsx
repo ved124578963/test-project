@@ -26,7 +26,7 @@ const AdminSidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/admin-users" className="flex items-center space-x-2 hover:text-green-400">
+          <Link to="/Adminusers" className="flex items-center space-x-2 hover:text-green-400">
             <FiUsers />
             {isOpen && <span>User Management</span>}
           </Link>

@@ -1,11 +1,11 @@
 import AdminSidebar from "../Components/AdminSidebar";
+import Adminusers from "./Adminusers";
 
 const AdminDashboard = () => {
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
       <AdminSidebar />
-
       {/* Main Dashboard Content */}
       <div className="flex-1 p-6 bg-gray-100">
         <h1 className="text-3xl font-bold text-gray-800">Admin Dashboard</h1>

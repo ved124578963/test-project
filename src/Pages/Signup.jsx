@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"; // Import Axios for API requests
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -18,23 +19,38 @@ const Signup = () => {
     village: "",
     pincode: "",
   });
-
+  
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    console.log("User Data:", formData); // Just logs the data for now
-    navigate("/login"); // Redirect to login page after signup
+    setError("");
+    setSuccess("");
+
+    try {
+      const response = await axios.post("https://treeplantadopt-springboot-production.up.railway.app/api/treeowner/registerowner", formData);
+      if (response.status === 201) {
+        setSuccess("Account created successfully!");
+        setTimeout(() => navigate("/login"), 2000); // Redirect to login after success
+      }
+    } catch (err) {
+      setError("Signup failed. Please try again.");
+    }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-6 rounded-lg shadow-md w-96">
         <h2 className="text-2xl font-bold text-center mb-4">Create Account</h2>
+
+        {error && <p className="text-red-500 text-center">{error}</p>}
+        {success && <p className="text-green-500 text-center">{success}</p>}
 
         <form onSubmit={handleSignup}>
           {Object.keys(formData).map((field, index) => (
