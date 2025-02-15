@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useEffect } from "react";
-
+import axios from "axios";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -9,19 +8,25 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  
-  useEffect(()=>{
+  useEffect(() => {
     console.log("Login Component is Mounted");
-  },[])
-  const handleLogin = (e) => {
+  }, []);
+
+  const handleLogin = async (e) => {
     e.preventDefault();
     setError(""); // Clear previous errors
 
-    // Temporary login validation (API will be added later)
-    if (username && password) {
-      localStorage.setItem("user", JSON.stringify({ username })); // Store user session
-      navigate("/"); // Redirect to Home Page
-    } else {
+    try {
+      const response = await axios.post("https://treeplantadopt-springboot-production.up.railway.app/treeowner/login", {
+        username,
+        password,
+      });
+
+      if (response.status === 200) {
+        sessionStorage.setItem("user", JSON.stringify(response.data)); // Store user session
+        navigate("/"); // Redirect to Home Page
+      }
+    } catch (err) {
       setError("Invalid username or password");
     }
   };

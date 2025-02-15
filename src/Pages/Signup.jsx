@@ -34,8 +34,8 @@ const Signup = () => {
     setSuccess("");
 
     try {
-      const response = await axios.post("https://treeplantadopt-springboot-production.up.railway.app/api/treeowner/registerowner", formData);
-      if (response.status === 201) {
+      const response = await axios.post("https://treeplantadopt-springboot-production.up.railway.app/treeowner/registerowner", formData);
+      if (response.status === 200) {
         setSuccess("Account created successfully!");
         setTimeout(() => navigate("/login"), 2000); // Redirect to login after success
       }

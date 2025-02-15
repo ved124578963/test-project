@@ -1,8 +1,15 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const user = JSON.parse(sessionStorage.getItem("user")); // Check if user is logged in
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("user"); // Clear session storage
+    navigate("/"); // Redirect to login page
+  };
 
   return (
     <nav className="bg-green-600 text-white p-4">
@@ -18,9 +25,15 @@ const Navbar = () => {
           <Link to="/" className="hover:underline">Home</Link>
           <Link to="/adopt" className="hover:underline">Adopt Tree</Link>
           <Link to="/my-trees" className="hover:underline">My Trees</Link>
-          <Link to="/login" className="bg-white text-green-600 px-4 py-1 rounded-lg hover:bg-gray-200">
-            Login / Register
-          </Link>
+          {user ? (
+            <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-1 rounded-lg hover:bg-red-600">
+              Logout
+            </button>
+          ) : (
+            <Link to="/login" className="bg-white text-green-600 px-4 py-1 rounded-lg hover:bg-gray-200">
+              Login / Register
+            </Link>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -35,9 +48,15 @@ const Navbar = () => {
           <Link to="/" className="hover:underline" onClick={() => setIsOpen(false)}>Home</Link>
           <Link to="/adopt" className="hover:underline" onClick={() => setIsOpen(false)}>Adopt Tree</Link>
           <Link to="/my-trees" className="hover:underline" onClick={() => setIsOpen(false)}>My Trees</Link>
-          <Link to="/login" className="bg-white text-green-600 px-4 py-1 rounded-lg hover:bg-gray-200" onClick={() => setIsOpen(false)}>
-            Login / Register
-          </Link>
+          {user ? (
+            <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-1 rounded-lg hover:bg-red-600">
+              Logout
+            </button>
+          ) : (
+            <Link to="/login" className="bg-white text-green-600 px-4 py-1 rounded-lg hover:bg-gray-200" onClick={() => setIsOpen(false)}>
+              Login / Register
+            </Link>
+          )}
         </div>
       )}
     </nav>
