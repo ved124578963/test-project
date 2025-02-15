@@ -14,9 +14,9 @@ const UploadPhoto = ({ imageSrc }) => {
   // Capture Photo & Get Location
   const capturePhoto = () => {
     if (!webcamRef.current) return;
-    
+
     setLoading(true);
-    
+
     // Capture image
     const imageSrc = webcamRef.current.getScreenshot();
     setImage(imageSrc);
@@ -54,9 +54,13 @@ const UploadPhoto = ({ imageSrc }) => {
         ref={webcamRef}
         screenshotFormat="image/jpeg"
         className="w-64 h-48 rounded-lg border-2 border-gray-300"
+        videoConstraints={{
+          facingMode: { exact: "environment" }, // Opens back camera by default
+        }}
       />
 
-      <button 
+
+      <button
         onClick={capturePhoto}
         className="mt-3 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
       >
@@ -68,7 +72,7 @@ const UploadPhoto = ({ imageSrc }) => {
         <div className="mt-4 text-center">
           <h3 className="text-lg font-semibold">Captured Image:</h3>
           <img src={image} alt="Captured" className="w-64 h-48 rounded-lg border-2 border-gray-300 mt-2" />
-          
+
           <h3 className="text-lg font-semibold mt-3">Location:</h3>
           <p>🌍 Latitude: {location.latitude}</p>
           <p>📍 Longitude: {location.longitude}</p>

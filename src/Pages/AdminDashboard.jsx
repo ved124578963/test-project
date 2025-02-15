@@ -1,5 +1,4 @@
 import AdminSidebar from "../Components/AdminSidebar";
-import Adminusers from "./Adminusers";
 
 const AdminDashboard = () => {
   return (
