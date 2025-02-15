@@ -4,7 +4,7 @@ import Footer from "./Components/Footer";  // Footer import
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
-import AdminLogin from "./Pages/AdminLogin";
+import AdminLogin from "./Pages/Adminlogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import Adminusers from "./Pages/Adminusers";
 
