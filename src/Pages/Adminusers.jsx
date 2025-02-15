@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const AdminUsers = () => {
+const Adminusers = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -59,4 +59,4 @@ const AdminUsers = () => {
   );
 };
 
-export default AdminUsers;
+export default Adminusers;

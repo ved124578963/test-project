@@ -6,7 +6,7 @@ import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import AdminLogin from "./Pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
-import AdminUsers from "./Pages/Adminusers";
+import Adminusers from "./Pages/Adminusers";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
             <Route path="/signup" element={<Signup />} /> 
             <Route path="/adminlogin" element={<AdminLogin />} /> 
             <Route path="/admindashboard" element={<AdminDashboard />} />
-            <Route path="/adminusers" element={<AdminUsers />} />
+            <Route path="/Adminusers" element={<Adminusers />} />
           </Routes>
         </main>
 
