@@ -23,8 +23,8 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6">
           <Link to="/" className="hover:underline">Home</Link>
-          <Link to="/adopt" className="hover:underline">Adopt Tree</Link>
-          <Link to="/my-trees" className="hover:underline">My Trees</Link>
+          <Link to="/Adopttrees" className="hover:underline">Adopt Tree</Link>
+          <Link to="/Mytrees" className="hover:underline">My Trees</Link>
           {user ? (
             <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-1 rounded-lg hover:bg-red-600">
               Logout

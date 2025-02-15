@@ -7,6 +7,9 @@ import Signup from "./Pages/Signup";
 import AdminLogin from "./Pages/Adminlogin";
 import AdminDashboard from "./Pages/AdminDashboard";
 import Adminusers from "./Pages/Adminusers";
+import Forgotpassword from "./Pages/Forgotpassword";
+import Adopttrees from "./Pages/Adopttrees";
+import Mytrees from "./Pages/Mytrees";
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
             <Route path="/adminlogin" element={<AdminLogin />} /> 
             <Route path="/admindashboard" element={<AdminDashboard />} />
             <Route path="/Adminusers" element={<Adminusers />} />
+            <Route path="/Forgotpassword" element={<Forgotpassword/>}/>
+            <Route path="/Adopttrees" element={<Adopttrees/>}/>
+            <Route path="/Mytrees" element={<Mytrees/>}/>
           </Routes>
         </main>
 
