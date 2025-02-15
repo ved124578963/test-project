@@ -5,7 +5,7 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import AdminLogin from "./Pages/Adminlogin";
-import AdminDashboard from "./pages/AdminDashboard";
+import AdminDashboard from "./Pages/AdminDashboard";
 import Adminusers from "./Pages/Adminusers";
 
 function App() {
