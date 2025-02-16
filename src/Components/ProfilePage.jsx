@@ -14,18 +14,26 @@ const ProfilePage = ({ user }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (user) {
-            setFirstName(user.firstName);
-            setLastName(user.lastName);
-            setEmail(user.email);
-            setProfileImg(user.profileImg);
-            setLoading(false);
+        const hasReloaded = sessionStorage.getItem("hasReloaded");
+        if (!hasReloaded) {
+            sessionStorage.setItem("hasReloaded", "true");
+            window.location.reload();
+        } else {
+            if (user) {
+                setFirstName(user.firstName);
+                setLastName(user.lastName);
+                setEmail(user.email);
+                setProfileImg(user.profileImg);
+                setLoading(false);
+            }
         }
     }, [user]);
 
     if (loading) {
+        console.log("Loading...");
         return <div>Loading...</div>;
     }
+
     const handleEditClick = () => {
         console.log(user);
         setIsEditing(true);
@@ -81,7 +89,7 @@ const ProfilePage = ({ user }) => {
             <div className="bg-white text-green-600 p-4 rounded-lg shadow-md">
                 <div className="flex items-center mb-4">
                     <img
-                        src={`https://treeplantadopt-springboot-production.up.railway.app/images/${profileImg}`}
+                        src={`https://treeplantadopt-springboot-production.up.railway.app/files/treeowners/images/${profileImg}`}
                         alt="Profile"
                         className="w-16 h-16 rounded-full mr-4"
                     />

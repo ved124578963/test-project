@@ -23,6 +23,7 @@ const Signup = () => {
     const [profileImage, setProfileImage] = useState(null);
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
+    const [validationErrors, setValidationErrors] = useState({});
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -33,10 +34,54 @@ const Signup = () => {
         setProfileImage(e.target.files[0]);
     };
 
+    const validateFields = async () => {
+        const errors = {};
+        try {
+            // Check username
+            if (formData.username) {
+                const usernameResponse = await axios.get(
+                    `https://treeplantadopt-springboot-production.up.railway.app/validate/username?username=${formData.username}`
+                );
+                if (usernameResponse.data) {
+                    errors.username = "Username already exists.";
+                }
+            }
+
+            // Check mobile number
+            if (formData.mobileNumber) {
+                const mobileResponse = await axios.get(
+                    `https://treeplantadopt-springboot-production.up.railway.app/validate/mobile?mobileNumber=${formData.mobileNumber}`
+                );
+                if (mobileResponse.data) {
+                    errors.mobileNumber = "Mobile number already exists.";
+                }
+            }
+
+            // Check email
+            if (formData.email) {
+                const emailResponse = await axios.get(
+                    `https://treeplantadopt-springboot-production.up.railway.app/validate/email?email=${formData.email}`
+                );
+                if (emailResponse.data) {
+                    errors.email = "Email already exists.";
+                }
+            }
+        } catch (err) {
+            console.error("Validation error:", err);
+            errors.global = "Validation failed. Please try again later.";
+        }
+
+        setValidationErrors(errors);
+        return Object.keys(errors).length === 0;
+    };
+
     const handleSignup = async (e) => {
         e.preventDefault();
         setError("");
         setSuccess("");
+
+        const isValid = await validateFields();
+        if (!isValid) return;
 
         const formDataWithImage = new FormData();
         formDataWithImage.append(
@@ -91,7 +136,9 @@ const Signup = () => {
                                         : "text"
                                 }
                                 name={field}
-                                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500"
+                                className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500 ${
+                                    validationErrors[field] && "border-red-500"
+                                }`}
                                 placeholder={`Enter ${field.replace(
                                     /([A-Z])/g,
                                     " $1"
@@ -100,6 +147,11 @@ const Signup = () => {
                                 onChange={handleChange}
                                 required
                             />
+                            {validationErrors[field] && (
+                                <p className="text-red-500 text-sm">
+                                    {validationErrors[field]}
+                                </p>
+                            )}
                         </div>
                     ))}
 
