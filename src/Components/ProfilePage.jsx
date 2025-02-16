@@ -19,13 +19,13 @@ const ProfilePage = ({ user }) => {
             setLastName(user.lastName);
             setEmail(user.email);
             setProfileImg(user.profileImg);
-            if (loading) {
-                return <div>Loading...{window.location.reload()}</div>;
-            }
             setLoading(false);
         }
     }, [user]);
 
+    if (loading) {
+        return <div>Loading...</div>;
+    }
     const handleEditClick = () => {
         console.log(user);
         setIsEditing(true);
