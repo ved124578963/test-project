@@ -5,15 +5,19 @@ const Adminusers = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    axios.get("https://treeplantadopt-springboot-production.up.railway.app/api/admin/users")
+  const fetchUsers = () => {
+    axios.get(`https://treeplantadopt-springboot-production.up.railway.app/admin/users?t=${Date.now()}`)
       .then(response => setUsers(response.data))
       .catch(error => console.error("Error fetching users:", error));
+  };
+
+  useEffect(() => {
+    fetchUsers();
   }, []);
 
   const handleDelete = (userId) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
-      axios.delete(`https://treeplantadopt-springboot-production.up.railway.app/api/admin/users/${userId}`)
+      axios.delete(`https://treeplantadopt-springboot-production.up.railway.app/treeowner/${userId}`)
         .then(() => setUsers(users.filter(user => user.id !== userId)))
         .catch(error => console.error("Error deleting user:", error));
     }
@@ -22,6 +26,14 @@ const Adminusers = () => {
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">User Management</h1>
+      
+      <button 
+        onClick={fetchUsers} 
+        className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 mb-4"
+      >
+        Refresh Users
+      </button>
+      
       <input
         type="text"
         placeholder="Search users..."

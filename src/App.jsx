@@ -10,6 +10,7 @@ import Adminusers from "./Pages/Adminusers";
 import Forgotpassword from "./Pages/Forgotpassword";
 import Adopttrees from "./Pages/Adopttrees";
 import Mytrees from "./Pages/Mytrees";
+import Leaderboard from "./Pages/Leaderboard";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/Forgotpassword" element={<Forgotpassword/>}/>
             <Route path="/Adopttrees" element={<Adopttrees/>}/>
             <Route path="/Mytrees" element={<Mytrees/>}/>
+            <Route path="/Leaderboard" element={<Leaderboard/>}/>
           </Routes>
         </main>
 

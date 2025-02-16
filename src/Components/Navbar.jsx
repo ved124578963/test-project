@@ -25,6 +25,7 @@ const Navbar = () => {
           <Link to="/" className="hover:underline">Home</Link>
           <Link to="/Adopttrees" className="hover:underline">Adopt Tree</Link>
           <Link to="/Mytrees" className="hover:underline">My Trees</Link>
+          <Link to="/Leaderboard" className="hover:underline">Leaderboard</Link>
           {user ? (
             <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-1 rounded-lg hover:bg-red-600">
               Logout
@@ -46,8 +47,9 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden flex flex-col items-center mt-2 space-y-2 bg-green-700 p-4">
           <Link to="/" className="hover:underline" onClick={() => setIsOpen(false)}>Home</Link>
-          <Link to="/adopt" className="hover:underline" onClick={() => setIsOpen(false)}>Adopt Tree</Link>
-          <Link to="/my-trees" className="hover:underline" onClick={() => setIsOpen(false)}>My Trees</Link>
+          <Link to="/Adopttrees" className="hover:underline" onClick={() => setIsOpen(false)}>Adopt Tree</Link>
+          <Link to="/Mytrees" className="hover:underline" onClick={() => setIsOpen(false)}>My Trees</Link>
+          <Link to="/leaderboard" className="hover:underline" onClick={() => setIsOpen(false)}>Leaderboard</Link>
           {user ? (
             <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-1 rounded-lg hover:bg-red-600">
               Logout
