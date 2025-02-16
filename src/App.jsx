@@ -11,6 +11,7 @@ import Forgotpassword from "./Pages/Forgotpassword";
 import Adopttrees from "./Pages/Adopttrees";
 import Mytrees from "./Pages/Mytrees";
 import Leaderboard from "./Pages/Leaderboard";
+import Donatetree from "./Pages/Donatetree";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/Adopttrees" element={<Adopttrees/>}/>
             <Route path="/Mytrees" element={<Mytrees/>}/>
             <Route path="/Leaderboard" element={<Leaderboard/>}/>
+            <Route path="/Donatetree" element={<Donatetree/>}/>
           </Routes>
         </main>
 

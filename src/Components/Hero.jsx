@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <section className="relative bg-green-100 py-20 text-center">
       <div className="max-w-4xl mx-auto px-6">
@@ -13,7 +16,7 @@ const Hero = () => {
             Adopt a Tree
           </button>
           <button
-            onClick={() => navigate("/donate-tree")}
+            onClick={() => navigate("/Donatetree")}
             className="px-6 py-3 bg-yellow-500 text-white text-lg font-semibold rounded-lg shadow-md hover:bg-yellow-600 transition"
           >
             Donate a Tree 🌱
